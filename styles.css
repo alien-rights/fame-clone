@@ -1,0 +1,315 @@
+
+/* TABLE OF CONTENTS */
+/* 0.0 - Table of Contents */
+/* 1.0 Font Faces */
+/* 1.0 - FONT FACES */
+/* 2.0 - CSS RESET */
+/* 3.0 - General Styles */
+/* 4.0 - Navigation */
+/* 5.0 - Company Profile */
+/* 6.0 - Balance Sheet */
+/* 7.0 - Tooltip */
+
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-Medium.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-Italic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-MediumItalic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-BoldItalic.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('Fonts/JetBrainsMono/JetBrainsMono-ExtraBoldItalic.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+
+/* 2.0 - CSS RESET */
+    /* 1. Use a more-intuitive box-sizing model. */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* 2. Remove default margin and padding */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Typographic tweaks!
+        3. Add accessible line-height
+        4. Improve text rendering
+    */
+    body {
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* 5. Improve media defaults */
+    img, picture, video, canvas, svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 6. Remove built-in form typography styles */
+    *, input, button, textarea, select {
+        font: inherit;
+    }
+
+    /* 7. Avoid text overflows */
+    p, h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+    }
+
+    /* 8. Create a root stacking context */
+    #root, #__next {
+        isolation: isolate;
+    }
+
+
+/* General Styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1.8fr 10.2fr;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #FDFBF5;
+    color:  #1C1A19;
+}
+
+main {
+    padding-inline: 40px;
+    padding-block: 50px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 36px;
+}
+
+h2, th {
+    font-weight: 700;
+}
+
+
+/* NAVIGATION */
+.main-nav {
+    border-right: 0.4px solid #74746A;
+}
+
+.main-nav__list {
+    margin-inline: 20px;
+    padding-block: 40px;
+}
+
+.main-nav__item {
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.main-nav__item--active {
+    background-color: #EFF1E3;
+    border-radius: 4px;
+}
+
+.main-nav__item:not(:last-of-type) {
+    margin-bottom: 16px;
+}
+
+/* COMPANY PROFILE */
+.company-profile {
+    margin-bottom: 60px;
+}
+
+.company-profile__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.company-profile__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.company-profile__label {
+    font-weight: 800;
+    white-space: nowrap;  /* Prevents wrapping of labels */
+}
+
+.company-profile__value {
+    justify-self: start;
+}
+
+/* Special handling for SIC Codes */
+.company-profile__sic-codes {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+
+/* BALANCE SHEET */
+.balance-sheet {
+    margin-bottom: 60px;
+    overflow-x: auto;
+}
+
+.balance-sheet__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+    min-width: 1000px;
+    
+    /* Adjust the min-width based on your content and column count */
+    /* min-width: calc(250px + (5 * 150px)); header width + (number of year columns * year column width) */
+}
+
+
+/* .balance-sheet__table .col-header {
+    width: 28%;
+    min-width: 250px;
+}
+.balance-sheet__table .col-year {
+    width: 14.4%; 
+    min-width: 120px;
+} */
+
+
+
+.balance-sheet__table th:last-child,
+.balance-sheet__table td:last-child {
+    padding-right: 20px;
+}
+
+.balance-sheet__table thead::after {
+    content: '';
+    display: block;
+    height: 16px;
+}
+
+.balance-sheet__table th {
+    text-align: left;
+}
+
+.balance-sheet__table td, .balance-sheet__table thead th {
+    text-align: right;
+}
+
+.balance-sheet__table__body tr {
+    border-bottom: 0.4px solid #74746A;
+}
+
+.balance-sheet__table__body th, .balance-sheet__table__body td {
+    padding-block: 12px;
+}
+
+
+
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: #DEDCD3;
+    color: #1C1A19;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.info-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #1C1A19;
+    color: #FDFBF5;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 14px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 4px;
+}
